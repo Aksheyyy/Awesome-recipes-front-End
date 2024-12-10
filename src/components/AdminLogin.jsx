@@ -50,7 +50,6 @@ const AdminLogin = () => {
           Admin Login
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email Field */}
           <div>
             <label className="block text-gray-700 font-medium">Email</label>
             <input
@@ -64,7 +63,7 @@ const AdminLogin = () => {
             />
           </div>
 
-          {/* Password Field */}
+
           <div>
             <label className="block text-gray-700 font-medium">Password</label>
             <input
@@ -83,7 +82,7 @@ const AdminLogin = () => {
             <p className="text-red-500 text-sm text-center">{errorMessage}</p>
           )}
 
-          {/* Submit Button */}
+          
           <div className="text-center">
             <button
               type="submit"

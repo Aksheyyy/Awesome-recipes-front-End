@@ -1,38 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Header = () => {
-  const [loggedIn, setLoggedIn] = useState(!!sessionStorage.getItem('user')); 
+const Header = ({isLoggedIn,setIsLoggedIn}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false); 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); 
   const navigate = useNavigate();
 
-  
-  useEffect(() => {
-    const updateAuthStatus = () => setLoggedIn(!!sessionStorage.getItem('user'));
-
-    window.addEventListener('authChange', updateAuthStatus); 
-
-    return () => {
-      window.removeEventListener('authChange', updateAuthStatus);
-    };
-  }, []);
 
   const handleLogout = () => {
     sessionStorage.clear();
-    setLoggedIn(false);
     setDropdownOpen(false);
+    setIsLoggedIn(false)
     navigate('/login');
-
-    
-    const event = new Event('authChange');
-    window.dispatchEvent(event);
   };
 
   return (
-    <nav className="bg-white shadow-lg relative">
+    <nav className="bg-white  shadow-lg relative">
       <div className="container mx-auto px-4 flex items-center justify-between py-4">
-        {/* logo */}
         <a href="/" className="text-2xl font-bold text-green-600">
           Awesome Recipes
         </a>
@@ -48,7 +32,7 @@ const Header = () => {
           <Link to="/favorites" className="text-gray-700 hover:text-teal-600">
             Favorites
           </Link>
-          {loggedIn ? (
+          {isLoggedIn? (
             <div className="relative z-50">
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -74,7 +58,7 @@ const Header = () => {
           )}
         </div>
 
-        {/* Hamburger Menu for Mobile */}
+        {/* Mobile */}
         <button
           className="md:hidden text-gray-700 focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -96,7 +80,7 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation Links */}
+      {/* Mobile Links */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white px-4 py-2 space-y-2 z-50">
           <Link to="/" className="block text-gray-700 hover:text-teal-600">
@@ -108,7 +92,7 @@ const Header = () => {
           <Link to="/favorites" className="block text-gray-700 hover:text-teal-600">
             Favorites
           </Link>
-          {loggedIn ? (
+          {isLoggedIn? (
             <button
               onClick={handleLogout}
               className="block w-full text-left text-gray-700 hover:text-teal-600"

@@ -79,7 +79,7 @@ if (loading) {
         </div>
       </div>
 
-      {/* Recipes Section */}
+      {/* Recipes*/}
       <div className="py-8 px-4 bg-cream-light">
         <h3 className="text-center text-2xl font-bold text-green-600 mb-6">
           Popular Recipes

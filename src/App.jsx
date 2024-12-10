@@ -11,19 +11,24 @@ import AdminDashboard from "./pages/AdminDashboard"
 import AdminLogin from "./components/AdminLogin"
 import AboutPage from "./components/AboutPage"
 import AdminRoute from "./components/AdminRoute"
+import { useState } from "react"
 
 
 
 function App() {
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(!!sessionStorage.getItem('user'));
+
+  const updateAuthStatus = (status) => {
+    setIsLoggedIn(status);
+  };
 
   return (
     <>
      <BrowserRouter>
-      <Header/>
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/login" element={<Login/>}/>
+          <Route path="/login" element={<Login updateAuthStatus={updateAuthStatus}/>}/>
           <Route path="/about" element={<AboutPage/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/view/:id" element={<ViewRecipe/>}/>

@@ -126,7 +126,6 @@ const AddRecipe = () => {
           {recipeId? "Edit Recipe" : " Add Recipe"}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Recipe Name */}
           <div>
             <label className="block text-gray-700 font-medium">Recipe Name</label>
             <input

@@ -6,7 +6,6 @@ const AboutPage = () => {
   return (
     <div className="bg-gray-100 min-h-screen py-12 px-6">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-        {/* Page Title */}
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           About Us
         </h1>
@@ -46,8 +45,6 @@ const AboutPage = () => {
             <li>Regular updates and additions to our recipe library.</li>
           </ul>
         </div>
-
-        {/* Call to Action */}
         <div className="text-center mt-8">
           <h3 className="text-lg font-medium text-gray-700">
             Start exploring recipes today!

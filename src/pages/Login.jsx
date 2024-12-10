@@ -3,10 +3,9 @@ import {Link,useNavigate} from 'react-router-dom'
 import { userloginAPI } from "../services/allAPI";
 
 
-const Login = () => {
+const Login = ({ updateAuthStatus }) => {
   
   const navigate = useNavigate()
-  const [loggedIn,setLoggedIn] = useState(false);
 
   const [userDetails,setUserDetails] = useState({
     email:"",password:''
@@ -24,7 +23,7 @@ const Login = () => {
           alert(`Welcome ${responce?.data?.user?.username}`)
           sessionStorage.setItem("user", JSON.stringify(responce?.data?.user));
           sessionStorage.setItem('token',responce?.data?.token)
-          setLoggedIn(true)
+          updateAuthStatus(true)
           navigate('/')
         }else if(responce.status==400){
           alert("Incorrect Credentials")
